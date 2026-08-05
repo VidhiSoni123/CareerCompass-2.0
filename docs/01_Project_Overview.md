@@ -11,11 +11,13 @@
 
 # 2. Project Objective
 
-Career Compass 2.0 is an AI-powered Career Intelligence Platform designed to assist both recruiters and job seekers by combining Artificial Intelligence, Machine Learning, Data Engineering, Business Intelligence, Full Stack Development, and DevOps into a single platform.
+Career Compass 2.0 is an AI-powered Career Intelligence Platform designed to assist both recruiters and job seekers by integrating Full Stack Development, Machine Learning, Data Engineering, Business Intelligence, Artificial Intelligence, and DevOps into a single end-to-end solution.
 
-The platform enables recruiters to efficiently process and analyze large volumes of candidate data through an Azure-based Data Engineering pipeline while helping candidates improve their resumes using AI-driven analysis, ATS optimization, personalized recommendations, and interactive visual reports.
+The platform enables recruiters to upload raw resume datasets and multiple resume PDFs, automatically process them through an Azure-based Data Engineering pipeline, and generate interactive hiring analytics dashboards.
 
-The primary objective of this project is to reduce manual effort in recruitment, improve resume quality, provide personalized career guidance, and demonstrate a complete end-to-end software solution.
+For candidates, the platform provides AI-powered resume analysis, ATS compatibility score, resume improvement suggestions, skill gap analysis, personalized project recommendations, job recommendations, resume comparison, and interactive visual reports.
+
+The project also demonstrates a complete software development lifecycle including development, machine learning, cloud-based data engineering, containerization, CI/CD, orchestration, and monitoring.
 
 ---
 
@@ -26,29 +28,32 @@ The primary objective of this project is to reduce manual effort in recruitment,
 ### Recruiters
 
 - Manual screening of hundreds or thousands of resumes is time-consuming.
-- Resume data is often unstructured and difficult to analyze.
-- It is challenging to identify the most suitable candidates quickly.
-- Recruiters lack centralized analytics for hiring insights.
+- Resume data is unstructured and difficult to analyze.
+- Candidate filtering and ranking require significant manual effort.
+- Recruiters lack centralized hiring analytics.
+- Searching candidates with required skills is inefficient.
 
 ### Candidates
 
-- Candidates are unaware of their ATS compatibility score.
-- They do not know which skills are missing for a target job.
-- Resume formatting mistakes reduce interview opportunities.
-- Generic career guidance does not provide personalized recommendations.
-- Candidates struggle to identify suitable projects and learning paths.
+- Candidates do not know whether their resume is ATS compatible.
+- Resume formatting issues reduce interview chances.
+- Missing keywords lower resume ranking.
+- Candidates are unaware of their skill gaps.
+- Generic career guidance lacks personalization.
+- Difficulty selecting projects relevant to target jobs.
 
 ---
 
 ## Proposed Solution
 
-Career Compass 2.0 provides two separate user portals.
+Career Compass 2.0 provides two dedicated portals.
 
 ### Recruiter Portal
 
+- Recruiter Authentication
 - Upload Resume Dataset (CSV)
 - Upload Multiple Resume PDFs
-- Azure Data Engineering Pipeline
+- Automated Azure Data Engineering Pipeline
 - Data Cleaning & Transformation
 - Candidate Search
 - Candidate Ranking
@@ -57,35 +62,40 @@ Career Compass 2.0 provides two separate user portals.
 
 ### Candidate Portal
 
+- Candidate Authentication
 - Resume Upload
 - Target Job Description Upload
-- ATS Score Analysis
+- ATS Compatibility Score
 - Resume Match Percentage
 - Resume Formatting Analysis
+- Weak Action Verb Detection
 - Missing Keyword Detection
 - Skill Gap Analysis
-- Learning Roadmap
 - GitHub Project Recommendations
+- Personalized Learning Roadmap
 - Resume Version Comparison
+- Job Recommendation Engine
 - Interactive Resume Dashboard
-- Job Recommendations
-- Interview Readiness Prediction
 
 ---
 
-# 4. Technology Stack
+# 4. Final Technology Stack
 
-| Layer | Technology |
-|--------|------------|
-| Frontend | React.js |
-| Backend | FastAPI (Python) |
-| Database | PostgreSQL |
-| Programming Language | Python, JavaScript |
-| AI/NLP | spaCy, TF-IDF, Resume Parsing |
+| Category | Technology |
+|----------|------------|
+| Frontend | HTML5, CSS3, JavaScript (ES6), React.js |
+| Backend | Node.js, Express.js |
+| Database | MongoDB |
+| Programming Languages | Python, JavaScript |
 | Machine Learning | Scikit-learn, Pandas, NumPy |
-| Data Engineering | Azure Data Factory, Azure Data Lake Storage, Azure Databricks, PySpark, Delta Lake |
+| Artificial Intelligence / NLP | spaCy, TF-IDF |
+| Data Engineering | Azure Data Factory (ADF), Azure Data Lake Storage (ADLS), Azure Databricks, PySpark, Delta Lake |
 | Business Intelligence | Power BI |
-| DevOps | Git, GitHub, Docker, GitHub Actions |
+| Version Control | Git, GitHub |
+| Continuous Integration | Jenkins |
+| Containerization | Docker |
+| Container Orchestration | Kubernetes |
+| Monitoring | Prometheus, Grafana |
 | Cloud Platform | Microsoft Azure |
 
 ---
@@ -94,48 +104,73 @@ Career Compass 2.0 provides two separate user portals.
 
 ## Recruiter Module
 
-- Recruiter Authentication
+- Recruiter Login
 - Upload Resume Dataset (CSV)
 - Upload Multiple Resume PDFs
 - Azure ETL Pipeline
-- Data Cleaning
-- Bronze, Silver & Gold Layers
+- Automated Data Cleaning
+- Bronze, Silver and Gold Data Layers
 - Candidate Search
 - Candidate Ranking
-- Skill Analytics
-- Hiring Insights
-- Power BI Dashboard
+- Hiring Analytics
+- Power BI Interactive Dashboard
 
 ---
 
 ## Candidate Module
 
-- Candidate Authentication
+- Candidate Login
 - Resume Upload
 - Target Job Description Upload
 - ATS Compatibility Score
 - Resume Match Percentage
 - Resume Formatting Analysis
 - Weak Action Verb Detection
-- Missing Keywords
+- Missing Keywords Analysis
 - Skill Gap Analysis
-- Resume Suggestions
-- Learning Roadmap
+- Resume Improvement Suggestions
+- Personalized Learning Roadmap
 - GitHub Project Recommendations
 - Resume Version Comparison
 - Job Recommendation Engine
-- Interview Readiness Prediction
-- Skill Recommendation
 - Interactive Resume Dashboard
 
 ---
 
-## Admin Module (Optional)
+## Data Engineering Module
 
-- User Management
-- Dataset Monitoring
-- Pipeline Status Monitoring
-- System Analytics
+- Raw Resume Storage
+- Azure Data Factory Pipelines
+- Azure Data Lake Storage
+- Databricks Processing
+- PySpark Transformations
+- Bronze Layer
+- Silver Layer
+- Gold Layer
+- Power BI Reporting
+
+---
+
+## Machine Learning Module
+
+- Resume Classification
+- Skill Gap Prediction
+- Job Recommendation System
+- Resume Ranking
+- Interview Readiness Prediction
+- Recommendation System
+
+---
+
+## DevOps Module
+
+- Git Version Control
+- GitHub Repository
+- Jenkins CI Pipeline
+- Docker Containerization
+- Kubernetes Deployment
+- Prometheus Monitoring
+- Grafana Dashboard
 
 ---
 
@@ -143,29 +178,51 @@ Career Compass 2.0 provides two separate user portals.
 
 The project will be considered successful if it achieves the following:
 
-- Fully functional Full Stack Web Application
-- End-to-End Azure Data Engineering Pipeline
-- AI-based Resume Analysis
-- Machine Learning Recommendation System
+- Complete MERN-based Full Stack Web Application
+- AI-powered Resume Analysis System
+- Machine Learning Recommendation Engine
+- Azure End-to-End Data Engineering Pipeline
 - Interactive Candidate Dashboard
-- Recruiter Analytics Dashboard
-- Power BI Reports
-- DevOps Pipeline using Docker and GitHub Actions
-- Complete Documentation
+- Interactive Recruiter Dashboard
+- Power BI Analytics Reports
+- Jenkins-based CI Pipeline
+- Dockerized Application
+- Kubernetes Deployment
+- Prometheus Monitoring
+- Grafana Visualization
+- Complete Project Documentation
 - GitHub Repository
-- Successful Project Demonstration
+- Successful End-to-End Demonstration
 
 ---
 
 # Future Scope
 
-The following features are intentionally excluded from Version 1.0 and may be implemented in future releases:
+The following enhancements may be added in future versions:
 
-- Real-time Job Portal Integration
 - AI Interview Chatbot
+- Resume Builder
+- Real-time Job Portal Integration (LinkedIn, Naukri, Indeed)
 - Email Notifications
 - Mobile Application
 - Multi-language Resume Analysis
-- Resume Builder
-- Cloud Deployment on Azure App Service
-- Resume Verification
+- Azure Kubernetes Service (AKS) Deployment
+- Large Language Model (LLM) Integration
+
+
+📌 Final Project Flow
+Planning
+      ↓
+Frontend
+      ↓
+Backend
+      ↓
+Data Engineering
+      ↓
+AI & NLP
+      ↓
+Machine Learning
+      ↓
+DevOps
+      ↓
+Testing & Deployment
