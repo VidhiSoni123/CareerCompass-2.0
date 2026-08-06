@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Student Registration Form</h2>
+
+        <form id="registrationForm">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+                <small class="error" id="nameError"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+                <small class="error" id="passwordError"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="branch">Branch</label>
+                <input type="text" id="branch" placeholder="Enter branch">
+                <small class="error" id="branchError"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" placeholder="Enter 10-digit phone number">
+                <small class="error" id="phoneError"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter email">
+                <small class="error" id="emailError"></small>
+            </div>
+
+            <button type="button" id="registerBtn">
+                Register
+            </button>
+
+            <p id="successMessage"></p>
+
+        </form>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+    "students": [
+        {
+            "id": 1,
+            "name": "Vidhi Soni",
+            "password": "vidhi123",
+            "branch": "Computer Science Engineering",
+            "phone": "9876543210",
+            "email": "vidhi@gmail.com"
+        },
+        {
+            "id": 2,
+            "name": "Rahul Sharma",
+            "password": "rahul456",
+            "branch": "Information Technology",
+            "phone": "9876501234",
+            "email": "rahul@gmail.com"
+        }
+    ]
+}

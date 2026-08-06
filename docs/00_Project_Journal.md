@@ -77,3 +77,30 @@ Successfully installed Jenkins, connected it with GitHub, and completed the firs
 
 git add .
 git commit -m "Day 2: Connected GitHub repository with Jenkins"
+
+ngrok http 8080
+
+Laptop ON
+     │
+     ▼
+Open Jenkins
+(http://localhost:8080)
+     │
+     ▼
+Run:
+ngrok http 8080
+     │
+     ▼
+If ngrok URL changed:
+Update GitHub Webhook
+     │
+     ▼
+Open VS Code
+     │
+     ▼
+git add .
+git commit
+git push
+     │
+     ▼
+Jenkins builds automatically 🚀
