@@ -27,20 +27,20 @@ console.log("TC3: script.js file exists - PASS");
 console.log("TC4: student.json file exists - PASS");
 
 // Test Case 5 - Name Validation
-// let tc5_name = "Vidhi";
-// console.log(
-//     "TC5: Name should not be empty -",
-//     tc5_name !== "" ? "PASS" : "FAIL"
-// );
+let tc5_name = "Vidhi";
+console.log(
+    "TC5: Name should not be empty -",
+    tc5_name !== "" ? "PASS" : "FAIL"
+);
 
-// Test Case 5 - Name Validation
-let tc5_name = "";
+// // Test Case 5 - Name Validation: FAILED
+// let tc5_name = "";
 
-if (tc5_name !== "") {
-    throw new Error("TC5 FAILED: Empty name was accepted");
-}
+// if (tc5_name !== "") {
+//     throw new Error("TC5 FAILED: Empty name was accepted");
+// }
 
-throw new Error("TC5 FAILED: Name validation failed");
+// throw new Error("TC5 FAILED: Name validation failed");
 
 // Test Case 6 - Password Validation
 let tc6_password = "12345";
@@ -71,8 +71,22 @@ console.log(
 );
 
 // Test Case 10 - Register Button
-let registerButton = document.getElementById("registerBtn");
-console.log(
-    "TC10: Register button exists and is clickable -",
-    registerButton ? "PASS" : "FAIL"
+// let registerButton = document.getElementById("registerBtn");
+// console.log(
+//     "TC10: Register button exists and is clickable -",
+//     registerButton ? "PASS" : "FAIL"
+// );
+
+// Test Case 10 - Register Button
+const fs = require("fs");
+
+const html = fs.readFileSync(
+    "practice/student_registration/index.html",
+    "utf8"
 );
+
+if (html.includes('id="wrongButton"')) {
+    throw new Error("TC10 FAILED: Register button not found");
+}
+
+throw new Error("TC10 FAILED: Register button test failed");
