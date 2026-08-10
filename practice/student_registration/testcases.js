@@ -5,7 +5,7 @@ Student Registration - Test Cases
 */
 
 // Test Case 1
-console.log("TC1: index.html file exists - PASS");
+console.log("TC1: indes.html file exists - PASS");
 
 // Test Case 2
 console.log("TC2: style.css file exists - PASS");
