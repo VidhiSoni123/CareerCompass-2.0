@@ -5,7 +5,14 @@ Student Registration - Test Cases
 */
 
 // Test Case 1
-console.log("TC1: indes.html file exists - PASS");
+// Test Case 1
+const fs = require("fs");
+
+if (!fs.existsSync("practice/student_registration/indes.html")) {
+    throw new Error("TC1 FAILED: index.html file does not exist");
+}
+
+console.log("TC1: index.html file exists - PASS");
 
 // Test Case 2
 console.log("TC2: style.css file exists - PASS");
