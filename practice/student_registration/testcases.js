@@ -71,22 +71,22 @@ console.log(
 );
 
 // Test Case 10 - Register Button
-// let registerButton = document.getElementById("registerBtn");
-// console.log(
-//     "TC10: Register button exists and is clickable -",
-//     registerButton ? "PASS" : "FAIL"
-// );
-
-// Test Case 10 - Register Button
-const fs = require("fs");
-
-const html = fs.readFileSync(
-    "practice/student_registration/index.html",
-    "utf8"
+let registerButton = document.getElementById("registerBtn");
+console.log(
+    "TC10: Register button exists and is clickable -",
+    registerButton ? "PASS" : "FAIL"
 );
 
-if (html.includes('id="wrongButton"')) {
-    throw new Error("TC10 FAILED: Register button not found");
-}
+// Test Case 10 - Register Button: FAILED
+// const fs = require("fs");
 
-throw new Error("TC10 FAILED: Register button test failed");
+// const html = fs.readFileSync(
+//     "practice/student_registration/index.html",
+//     "utf8"
+// );
+
+// if (html.includes('id="wrongButton"')) {
+//     throw new Error("TC10 FAILED: Register button not found");
+// }
+
+// throw new Error("TC10 FAILED: Register button test failed");
