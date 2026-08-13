@@ -4,89 +4,361 @@ Student Registration - Test Cases
 =========================================
 */
 
-// Test Case 1
+const fs = require("fs");
+const vm = require("vm");
 
-console.log("TC1: indes.html file exists - PASS");
+let failedTests = 0;
 
-// // Test Case 1 : FAILED
-// const fs = require("fs");
+function pass(testName) {
+    console.log(`PASS: ${testName}`);
+}
 
-// if (!fs.existsSync("practice/student_registration/indes.html")) {
-//     throw new Error("TC1 FAILED: index.html file does not exist");
-// }
+function fail(testName, error) {
+    console.error(`FAIL: ${testName}`);
+    console.error(`     ${error}`);
+    failedTests++;
+}
 
-// console.log("TC1: index.html file exists - PASS");
+/*
+=========================================
+TC1 - index.html exists
+=========================================
+*/
 
-// Test Case 2
-console.log("TC2: style.css file exists - PASS");
+try {
+    if (!fs.existsSync("practice/student_registration/index.html")) {
+        throw new Error("index.html does not exist");
+    }
 
-// Test Case 3
-console.log("TC3: script.js file exists - PASS");
+    pass("TC1 - index.html file exists");
+} catch (error) {
+    fail("TC1 - index.html file exists", error.message);
+}
 
-// Test Case 4
-console.log("TC4: student.json file exists - PASS");
 
-// Test Case 5 - Name Validation
-let tc5_name = "Vidhi";
-console.log(
-    "TC5: Name should not be empty -",
-    tc5_name !== "" ? "PASS" : "FAIL"
-);
+/*
+=========================================
+TC2 - style.css exists
+=========================================
+*/
 
-// // Test Case 5 - Name Validation: FAILED
-// let tc5_name = "";
+try {
+    if (!fs.existsSync("practice/student_registration/style.css")) {
+        throw new Error("style.css does not exist");
+    }
 
-// if (tc5_name !== "") {
-//     throw new Error("TC5 FAILED: Empty name was accepted");
-// }
+    pass("TC2 - style.css file exists");
+} catch (error) {
+    fail("TC2 - style.css file exists", error.message);
+}
 
-// throw new Error("TC5 FAILED: Name validation failed");
 
-// Test Case 6 - Password Validation
-let tc6_password = "12345";
-console.log(
-    "TC6: Password should contain at least 6 characters -",
-    tc6_password.length >= 6 ? "PASS" : "FAIL"
-);
+/*
+=========================================
+TC3 - script.js exists
+=========================================
+*/
 
-// Test Case 7 - Branch Validation
-let tc7_branch = "CSE";
-console.log(
-    "TC7: Branch should not be empty -",
-    tc7_branch !== "" ? "PASS" : "FAIL"
-);
+try {
+    if (!fs.existsSync("practice/student_registration/script.js")) {
+        throw new Error("script.js does not exist");
+    }
 
-// Test Case 8 - Phone Validation
-let tc8_phone = "9876543210";
-console.log(
-    "TC8: Phone number should contain exactly 10 digits -",
-    /^[0-9]{10}$/.test(tc8_phone) ? "PASS" : "FAIL"
-);
+    pass("TC3 - script.js file exists");
+} catch (error) {
+    fail("TC3 - script.js file exists", error.message);
+}
 
-// Test Case 9 - Email Validation
-let tc9_email = "vidhi@gmail.com";
-console.log(
-    "TC9: Email should contain '@' -",
-    tc9_email.includes("@") ? "PASS" : "FAIL"
-);
 
-// Test Case 10 - Register Button
-let registerButton = document.getElementById("registerBtn");
-console.log(
-    "TC10: Register button exists and is clickable -",
-    registerButton ? "PASS" : "FAIL"
-);
+/*
+=========================================
+TC4 - student.json exists and has
+     correct basic structure
+=========================================
+*/
 
-// Test Case 10 - Register Button: FAILED
-// const fs = require("fs");
+try {
+    const data = JSON.parse(
+        fs.readFileSync(
+            "practice/student_registration/student.json",
+            "utf8"
+        )
+    );
 
-// const html = fs.readFileSync(
-//     "practice/student_registration/index.html",
-//     "utf8"
-// );
+    if (!Array.isArray(data.students)) {
+        throw new Error("'students' must be an array");
+    }
 
-// if (html.includes('id="wrongButton"')) {
-//     throw new Error("TC10 FAILED: Register button not found");
-// }
+    pass("TC4 - student.json exists and contains students array");
+} catch (error) {
+    fail(
+        "TC4 - student.json exists and contains students array",
+        error.message
+    );
+}
 
-// throw new Error("TC10 FAILED: Register button test failed");
+
+/*
+=========================================
+Create a small fake DOM so that the
+actual script.js can be tested using Node
+=========================================
+*/
+
+function createElement(value = "") {
+    return {
+        value: value,
+        textContent: "",
+        addEventListener: function () {}
+    };
+}
+
+const elements = {
+    name: createElement(),
+    password: createElement(),
+    branch: createElement(),
+    phone: createElement(),
+    email: createElement(),
+
+    nameError: createElement(),
+    passwordError: createElement(),
+    branchError: createElement(),
+    phoneError: createElement(),
+    emailError: createElement(),
+
+    successMessage: createElement(),
+
+    registerBtn: createElement()
+};
+
+const fakeDocument = {
+    getElementById: function (id) {
+        return elements[id];
+    }
+};
+
+const context = {
+    document: fakeDocument,
+    console: console
+};
+
+vm.createContext(context);
+
+try {
+    const scriptCode = fs.readFileSync(
+        "practice/student_registration/script.js",
+        "utf8"
+    );
+
+    vm.runInContext(scriptCode, context);
+} catch (error) {
+    console.error("Could not load script.js");
+    console.error(error.message);
+    process.exit(1);
+}
+
+
+/*
+=========================================
+Helper function
+=========================================
+*/
+
+function resetForm() {
+    elements.name.value = "";
+    elements.password.value = "";
+    elements.branch.value = "";
+    elements.phone.value = "";
+    elements.email.value = "";
+
+    elements.nameError.textContent = "";
+    elements.passwordError.textContent = "";
+    elements.branchError.textContent = "";
+    elements.phoneError.textContent = "";
+    elements.emailError.textContent = "";
+    elements.successMessage.textContent = "";
+}
+
+
+/*
+=========================================
+TC5 - Name Validation
+=========================================
+*/
+
+try {
+    resetForm();
+
+    elements.name.value = "";
+    elements.password.value = "123456";
+    elements.branch.value = "CSE";
+    elements.phone.value = "9876543210";
+    elements.email.value = "vidhi@gmail.com";
+
+    context.validateForm();
+
+    if (elements.nameError.textContent === "") {
+        throw new Error("Empty name was accepted");
+    }
+
+    pass("TC5 - Empty name is rejected");
+} catch (error) {
+    fail("TC5 - Empty name is rejected", error.message);
+}
+
+
+/*
+=========================================
+TC6 - Password Validation
+=========================================
+*/
+
+try {
+    resetForm();
+
+    elements.name.value = "Vidhi";
+    elements.password.value = "12345";
+    elements.branch.value = "CSE";
+    elements.phone.value = "9876543210";
+    elements.email.value = "vidhi@gmail.com";
+
+    context.validateForm();
+
+    if (elements.passwordError.textContent === "") {
+        throw new Error("Password with less than 6 characters was accepted");
+    }
+
+    pass("TC6 - Short password is rejected");
+} catch (error) {
+    fail("TC6 - Short password is rejected", error.message);
+}
+
+
+/*
+=========================================
+TC7 - Branch Validation
+=========================================
+*/
+
+try {
+    resetForm();
+
+    elements.name.value = "Vidhi";
+    elements.password.value = "123456";
+    elements.branch.value = "";
+    elements.phone.value = "9876543210";
+    elements.email.value = "vidhi@gmail.com";
+
+    context.validateForm();
+
+    if (elements.branchError.textContent === "") {
+        throw new Error("Empty branch was accepted");
+    }
+
+    pass("TC7 - Empty branch is rejected");
+} catch (error) {
+    fail("TC7 - Empty branch is rejected", error.message);
+}
+
+
+/*
+=========================================
+TC8 - Phone Validation
+=========================================
+*/
+
+try {
+    resetForm();
+
+    elements.name.value = "Vidhi";
+    elements.password.value = "123456";
+    elements.branch.value = "CSE";
+    elements.phone.value = "12345";
+    elements.email.value = "vidhi@gmail.com";
+
+    context.validateForm();
+
+    if (elements.phoneError.textContent === "") {
+        throw new Error("Invalid phone number was accepted");
+    }
+
+    pass("TC8 - Invalid phone number is rejected");
+} catch (error) {
+    fail("TC8 - Invalid phone number is rejected", error.message);
+}
+
+
+/*
+=========================================
+TC9 - Email Validation
+=========================================
+*/
+
+try {
+    resetForm();
+
+    elements.name.value = "Vidhi";
+    elements.password.value = "123456";
+    elements.branch.value = "CSE";
+    elements.phone.value = "9876543210";
+    elements.email.value = "vidhi.gmail.com";
+
+    context.validateForm();
+
+    if (elements.emailError.textContent === "") {
+        throw new Error("Invalid email was accepted");
+    }
+
+    pass("TC9 - Invalid email is rejected");
+} catch (error) {
+    fail("TC9 - Invalid email is rejected", error.message);
+}
+
+
+/*
+=========================================
+TC10 - Valid Registration
+=========================================
+*/
+
+try {
+    resetForm();
+
+    elements.name.value = "Vidhi";
+    elements.password.value = "123456";
+    elements.branch.value = "CSE";
+    elements.phone.value = "9876543210";
+    elements.email.value = "vidhi@gmail.com";
+
+    context.validateForm();
+
+    if (
+        elements.successMessage.textContent !==
+        "Registration Successful!"
+    ) {
+        throw new Error("Valid registration was rejected");
+    }
+
+    pass("TC10 - Valid registration is accepted");
+} catch (error) {
+    fail("TC10 - Valid registration is accepted", error.message);
+}
+
+
+/*
+=========================================
+FINAL RESULT
+=========================================
+*/
+
+console.log("\n=========================================");
+
+if (failedTests > 0) {
+    console.error(`${failedTests} test(s) failed.`);
+    console.error("BUILD SHOULD FAIL.");
+    process.exit(1);
+} else {
+    console.log("All 10 test cases passed.");
+    console.log("BUILD CAN PASS.");
+    process.exit(0);
+}
