@@ -15,6 +15,14 @@
             "branch": "Information Technology",
             "phone": "9876501234",
             "email": "rahul@gmail.com"
+        },
+        {
+            "name": "Krishna",
+            "password": "Kridhi1102",
+            "branch": "cse",
+            "phone": "1111112222",
+            "email": "Kridhi@gmail.com",
+            "id": 3
         }
     ]
 }

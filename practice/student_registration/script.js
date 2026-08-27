@@ -60,6 +60,31 @@ function validateForm() {
 
     // Success
     if (isValid) {
-        successMessage.textContent = "Registration Successful!";
-    }
+
+    const student = {
+        name: name,
+        password: password,
+        branch: branch,
+        phone: phone,
+        email: email
+    };
+
+    fetch("/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(student)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            successMessage.textContent = data.message;
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        successMessage.textContent = "Registration failed.";
+    });
+}
 }

@@ -88,7 +88,7 @@ Open Jenkins
      │
      ▼
 Run:
-ngrok http 8080
+ngrok http 8080    https://github.com/VidhiSoni123/Devops_2026_CS_F_08
      │
      ▼
 If ngrok URL changed:
